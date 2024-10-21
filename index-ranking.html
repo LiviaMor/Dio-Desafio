@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking Valorant</title>
+    <script>
+        function getValorantRanking(nome, experiencia) {
+            let ranking;
+
+            if (experiencia <= 1000) {
+                ranking = "Ferro";
+            } else if (experiencia <= 2000) {
+                ranking = "Bronze";
+            } else if (experiencia <= 3000) {
+                ranking = "Prata";
+            } else if (experiencia <= 4000) {
+                ranking = "Ouro";
+            } else if (experiencia <= 5000) {
+                ranking = "Platina";
+            } else if (experiencia <= 6000) {
+                ranking = "Diamante";
+            } else if (experiencia <= 7000) {
+                ranking = "Ascendente";
+            } else if (experiencia <= 8000) {
+                ranking = "Imortal";
+            } else if (experiencia <= 10000) {
+                ranking = "Radiante";
+            } else {
+                ranking = "Inválido";
+            }
+
+            return { nome, experiencia, ranking };
+        }
+
+        function calcularRanking() {
+            const nome = document.getElementById("nome").value;
+            const experiencia = parseInt(document.getElementById("experiencia").value);
+
+            const resultado = getValorantRanking(nome, experiencia);
+
+            document.getElementById("resultado").innerText =
+                `Jogador: ${resultado.nome}, Experiência: ${resultado.experiencia}, Ranking: ${resultado.ranking}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Ranking Valorant</h1>
+    <form onsubmit="calcularRanking(); return false;">
+        <label for="nome">Nome do Jogador:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br>
+        <label for="experiencia">Experiência:</label>
+        <input type="number" id="experiencia" name="experiencia" required>
+        <br>
+        <button type="submit">Calcular Ranking</button>
+    </form>
+    <p id="resultado"></p>
+</body>
+</html>
